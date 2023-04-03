@@ -1,0 +1,58 @@
+.card_container {
+    display: flex;
+    border: 1px solid black;
+    overflow: hidden;
+    padding: 1%;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.card_container_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card_container_heading h4 {
+    padding: 0 6% 0 0;
+}
+
+.card_container_heading div {
+    text-align: end;
+}
+
+.card_container_heading.favoritesong {
+    display: flex;
+    align-items: flex-start;
+}
+
+.card_container_heading.favoritesong h4 {
+    margin: 0;
+}
+
+.card_container_heading.favoritesong span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.card_container_image {
+    overflow: hidden;
+}
+
+.card_container_image img {
+    object-fit: contain;
+    width: 40%;
+}
+
+.card_container_heading_btn {
+    display: inline-block;
+    width: 100%;
+}
+
+.card_container_heading_btn button {
+    width: 100%;
+}

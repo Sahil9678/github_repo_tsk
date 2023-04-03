@@ -35,4 +35,31 @@
   to {
     transform: rotate(360deg);
   }
+
+}
+
+.filter_result {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+}
+
+.filter_head_container{
+  display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.filter_head_container *{
+  padding: 10px;
+}
+
+.filter_head {
+  display: flex;
+    width: 80%;
+}
+
+.filter_head input{
+  width: 100%;
 }
