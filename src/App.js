@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const [searchitem, setSearchitem] = useState({ srchinput: '', searchtype: 'code', sorttype: '' })
-  const [showndata, setshowndata] = useState({ data: [], loading: false })
+  const [showndata, setshowndata] = useState({ data: [], loading: false, message: '' })
 
   const handlesearchfilter = (item) => {
     setSearchitem(prev => ({ ...prev, ...item }));
@@ -16,21 +16,30 @@ function App() {
   const searchapi = async () => {
     setshowndata(prev => ({ ...prev, loading: true }))
 
-    await axios.get(`https://api.github.com/search/${searchitem.searchtype}?q=${searchitem.srchinput}`).then(data => {
-
-      data.data.items.forEach(elem => {
-        axios.get(elem.repository_url).then(res => {
-          setshowndata(prev => ({
-            ...prev, data: [...prev.data, ({
-              ...elem,
-              reponame: res.data.name,
-              description: res.data.description,
-              language: res.data.language,
-            })]
-          }))
-        });
+    await axios.get(`https://api.github.com/search/${searchitem.searchtype}?q=${searchitem.srchinput}`)
+      .then(data => {
+        data.data.items.forEach(elem => {
+          axios.get(elem.repository_url)
+            .then(res => {
+              setshowndata(prev => ({
+                ...prev, data: [...prev.data, ({
+                  ...elem,
+                  reponame: res.data.name,
+                  description: res.data.description,
+                  language: res.data.language,
+                })]
+              }))
+            })
+            .catch(error => {
+              console.log('error1 -', error)
+              setshowndata(prev => ({ ...prev, loading: false, message: '' }))
+            })
+        })
       })
-    });
+      .catch(error => {
+        console.log('error1 -', error)
+        setshowndata(prev => ({ ...prev, loading: false, message: error.response.data.errors[0].message || error.response.data.errors.message }))
+      })
   }
 
   return (
@@ -73,7 +82,7 @@ function App() {
               return (
                 <Cardcomponent elem={elem} />
               )
-            }) : <div className='filter_loader'>{showndata.loading ? <CircularProgress /> : <></>}</div>
+            }) : <div className='filter_loader'>{showndata.loading ? <CircularProgress /> : <>{showndata.message}</>}</div>
         }
       </div>
     </div>
