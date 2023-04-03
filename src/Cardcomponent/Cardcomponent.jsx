@@ -9,24 +9,23 @@ const Cardcomponent = ({ elem }) => {
         <>
             <div className='card_container'>
                 <div className='card_container_image'>
-                    <h4>Avatar</h4>
-                    <img src={elem.user.avatar_url} />
+                    <img src={elem.user.avatar_url || "🙂"} />
                 </div>
                 <div className='card_container_heading heading1'>
                     <h4>Repo Name</h4>
-                    <div>{elem.reponame}</div>
+                    <div>{elem.reponame || '-'}</div>
                 </div>
                 <div className='card_container_heading heading1'>
                     <h4>Stars</h4>
-                    <div>{elem.score}</div>
+                    <div>{elem.score || '-'}</div>
                 </div>
                 <div className='card_container_heading heading1'>
                     <h4>Description</h4>
-                    <div>{elem.description}</div>
+                    <div>{elem.description || '-'}</div>
                 </div>
                 <div className='card_container_heading heading1'>
                     <h4>language</h4>
-                    <div>{elem.language}</div>
+                    <div>{elem.language || '-'}</div>
                 </div>
             </div>
         </>

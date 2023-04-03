@@ -2,9 +2,11 @@
     display: flex;
     border: 1px solid black;
     overflow: hidden;
-    padding: 1%;
+    padding: 5%;
     align-items: flex-start;
     flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 2px 2px 4px grey;
 }
 
 .card_container_heading {
@@ -41,11 +43,16 @@
 
 .card_container_image {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 .card_container_image img {
     object-fit: contain;
     width: 40%;
+    border-radius: 100%;
 }
 
 .card_container_heading_btn {
