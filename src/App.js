@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <div className='filter_head_container'>
         <div className='filter_head'>
-          <input className='filter_head_inp' type='text' value={searchitem.srchinput} onChange={(e) => { handlesearchfilter({ srchinput: e.target.value }) }} />
+          <input placeholder='Please Enter Search Keyword Here' className='filter_head_inp' type='text' value={searchitem.srchinput} onChange={(e) => { handlesearchfilter({ srchinput: e.target.value }) }} />
           <div className='filter_searchtype'>
             <span>Search Type</span>
             <select value={searchitem.searchtype} onChange={(e) => handlesearchfilter({ searchtype: e.target.value })}>
